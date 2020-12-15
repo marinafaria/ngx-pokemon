@@ -1,1 +1,5 @@
-<app-search-bar></app-search-bar>
+<app-header></app-header>
+
+<app-search-bar (searchedResults)="handlePokemonClick()"></app-search-bar>
+
+<app-pokemon-card [pokemon]="" (onPokemonClick)="handlePokemonClick()"></app-pokemon-card>

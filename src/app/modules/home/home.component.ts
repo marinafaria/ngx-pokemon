@@ -12,4 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handlePokemonClick() {
+    console.log('cheguei');
+  }
 }

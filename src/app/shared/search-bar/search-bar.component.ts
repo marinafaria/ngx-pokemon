@@ -1,7 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, filter, switchMap, takeUntil } from 'rxjs/operators';
+import { PokedexService } from 'src/app/core/services/pokedex.service';
+import { PokedexRequest } from 'src/app/models/pokedex-request.model';
+import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -14,8 +17,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
   formSubscription: Subscription;
 
+  @Output() searchedResults = new EventEmitter<PokedexRequest[]>();
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private pokedexService: PokedexService
   ) { }
 
   ngOnInit(): void {
@@ -28,11 +34,20 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   handleForm(): void {
     this.form.controls.searchInput.valueChanges
     .pipe(
+      filter(input => String(input).length >= 3),
       takeUntil(this.destroy$),
-      debounceTime(1000)
+      debounceTime(1000),
+      switchMap( input => {
+        // return this.pokedexService.getPokemonByName(input);
+        const results = this.pokedexService.pokemonList$.getValue()
+          .filter( pokemon => pokemon.name.startsWith(input));
+          console.log(results);
+          
+          return results;
+      })
     )
-    .subscribe(value => {
-      console.log(value);
+    .subscribe((value: any ) => {
+      this.searchedResults.emit(value);
     });
   }
 
