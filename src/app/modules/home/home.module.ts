@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SearchBarModule } from 'src/app/shared/search-bar/search-bar.module';
 import { HeaderModule } from 'src/app/core/basic-layout/header/header.module';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HomeComponent, PokemonCardComponent],
@@ -12,7 +13,8 @@ import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.com
     CommonModule,
     HomeRoutingModule,
     SearchBarModule,
-    HeaderModule
+    HeaderModule,
+    RouterModule
   ]
 })
 export class HomeModule { }

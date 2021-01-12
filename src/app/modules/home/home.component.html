@@ -1,5 +1,15 @@
-<app-header></app-header>
+<div class="home-container">
+    <app-header></app-header>
 
-<app-search-bar (searchedResults)="handlePokemonClick()"></app-search-bar>
+    <app-search-bar (searchedResults)="handlePokemonSearchedResults($event)"></app-search-bar>
 
-<app-pokemon-card [pokemon]="" (onPokemonClick)="handlePokemonClick()"></app-pokemon-card>
+
+    <div class="card-container">
+        <app-pokemon-card 
+            *ngFor="let pokemon of (pokemonList$ | async).slice(0,10)" 
+            [pokedex]="pokemon" 
+            (onPokemonClick)="handlePokemonClick($event)"
+        >
+        </app-pokemon-card>
+    </div>
+</div>

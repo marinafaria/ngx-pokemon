@@ -5,7 +5,7 @@ export interface Pokemon {
     name: string;
     abilities: Ability[];
     game_indices: Game[];
-    sprites: string[];
+    sprite: string;
     types: {
         type: {
             name: string;

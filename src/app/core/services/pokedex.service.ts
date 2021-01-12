@@ -24,8 +24,13 @@ export class PokedexService {
   }
 
   getPokemonByName(name: string): Observable<Pokemon> {
-    return this.http.get(`${environment.baseApiUrl}/pokemon/${name}`) as Observable<Pokemon>;
+    return this.http.get<Pokemon>(`${environment.baseApiUrl}/pokemon/${name}`).pipe(
+      map( pokemon => ({
+        ...pokemon, sprite: pokemon['sprites'].other['official-artwork'].front_default
+      }))
+    );
   }
+
 
   handlePokedexResults(result: any): PokedexRequest[] {
     return result.results;

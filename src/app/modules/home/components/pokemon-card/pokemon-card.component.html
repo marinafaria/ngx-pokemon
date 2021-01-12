@@ -1,4 +1,5 @@
-<div class="card-container" (click)='onPokemonClick.emit(pokemon)'>
-    {{ pokemon?.name }}
-    oi
+<div class="card-container" (click)='onPokemonClick.emit(pokedex)'>
+    <div class="pokemon-name"> {{ pokemon?.name }} </div>
+    <img [src]="pokemon?.sprite" width="100"/>
+    <ng-content></ng-content>
 </div>

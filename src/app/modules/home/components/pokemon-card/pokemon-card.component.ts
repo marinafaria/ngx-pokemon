@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { PokedexService } from 'src/app/core/services/pokedex.service';
+import { PokedexRequest } from 'src/app/models/pokedex-request.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 
 @Component({
@@ -8,12 +10,17 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class PokemonCardComponent implements OnInit {
 
-  @Input() pokemon: Pokemon;
-  @Output() onPokemonClick = new EventEmitter<Pokemon>();
+  @Input() pokedex: PokedexRequest;
+  @Output() onPokemonClick = new EventEmitter<PokedexRequest>();
 
-  constructor() { }
+  pokemon: Pokemon;
 
-  ngOnInit(): void {
+  constructor(
+    private pokedexService: PokedexService
+  ) { }
+
+  ngOnInit(): void {  
+    this.pokedexService.getPokemonByName(this.pokedex.name).subscribe(pokemon => this.pokemon = pokemon);
   }
 
 }

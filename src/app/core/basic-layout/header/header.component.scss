@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.header-container {
+    background-color: #fe1a55;
+    margin-bottom: 5vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+.circle {
+    display: inline-block;
+    border-radius: 50%;
+    margin: 20px;
+    vertical-align: text-top;
+    border: black solid 3px;
+  }
+
+  .title {
+      display: inline;
+      float: right;
+      margin-right: 5vw;
+      color: aliceblue;
+  }
+
+  .pokedex-border{
+      position: relative;
+      left: 60vw;
+      width: 50vw;
+      height: 8vh;
+      margin: 0;
+      overflow: hidden;
+      background-color: #ca215a;
+      -webkit-transform: skew(-30deg); /* Chrome, Opera */
+      -ms-transform: skew(-30deg); /* IE */
+          transform: skew(-30deg); /* Padrão */
+  }

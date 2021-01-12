@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.card-container {
+    padding:3px;
+    border: 1px solid white;
+    border-radius: 3px;
+    color:aliceblue;
+    min-width: 100px;
+    max-height: 50px;
+    margin: 30px 2px 30px 2px;
+    cursor: pointer;
+}
+
+.pokemon-name {
+    display: inline;
+    position: relative;
+    bottom:75px;
+}
+
+.card-container:hover{
+    transition: .5s;
+    background-color:aliceblue;
+    color: black;
+}
+
+img {
+    position: relative;
+    bottom: 30px;
+}
