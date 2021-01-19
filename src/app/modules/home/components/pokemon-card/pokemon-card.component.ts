@@ -15,6 +15,8 @@ export class PokemonCardComponent implements OnInit {
 
   pokemon: Pokemon;
 
+  placeholder = '/assets/pokeball.jpg';
+
   constructor(
     private pokedexService: PokedexService
   ) { }
