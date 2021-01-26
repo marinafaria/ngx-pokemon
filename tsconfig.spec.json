@@ -2,10 +2,28 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine"
-    ]
+      "jest",
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "sourceMap": true,
+    "esModuleInterop": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "es2015"
+    ],
+    "resolveJsonModule": true
   },
   "files": [
     "src/test.ts",
