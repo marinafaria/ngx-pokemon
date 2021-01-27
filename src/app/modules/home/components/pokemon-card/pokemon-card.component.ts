@@ -22,7 +22,7 @@ export class PokemonCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {  
-    this.pokedexService.getPokemonByName(this.pokedex.name).subscribe(pokemon => this.pokemon = pokemon);
+    this.pokedexService.getPokemonByName(this.pokedex?.name).subscribe(pokemon => this.pokemon = pokemon);
   }
 
 }
