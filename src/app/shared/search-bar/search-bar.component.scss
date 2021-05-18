@@ -1,6 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.search-bar-container{
+    display: flex;
+    justify-content: center;
+}
+
 input {
-    padding: 10px;
+    padding: 7vh 10vw;
     border: none;
     border-radius: 6px;
     outline: none;
+    background-color: black;
+    color: #ddd;
+    font-size: 40px;
+    font-family: 'Montserrat';
+}
+
+::placeholder{
+    font-family: 'Montserrat';
+    color: #ddd;
+    font-size: 30px;
 }

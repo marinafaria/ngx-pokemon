@@ -7,7 +7,7 @@
     color:aliceblue;
     min-width: 100px;
     max-height: 50px;
-    margin: 30px 2px 30px 2px;
+    margin: 30px 5px 30px 5px;
     cursor: pointer;
 }
 
@@ -20,7 +20,8 @@
 .card-container:hover{
     transition: .5s;
     background-color:aliceblue;
-    color: black;
+    color: #ca215a;
+    font-weight: bold;
 }
 
 img {
