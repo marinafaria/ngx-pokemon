@@ -11,5 +11,6 @@
             (onPokemonClick)="handlePokemonClick($event)"
         >
         </app-pokemon-card>
+        <span *ngIf="pokemonList$.value.length === 0"> Não foi encontrado nenhum pokemón! </span>
     </div>
 </div>
