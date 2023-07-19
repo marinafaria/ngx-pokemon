@@ -117,5 +117,8 @@
         }
       }
     }},
-  "defaultProject": "ngx-pokemon"
+  "defaultProject": "ngx-pokemon",
+  "cli": {
+    "analytics": "161fe330-0fa1-4a68-bde0-500aaf6ca4f8"
+  }
 }
