@@ -1,12 +1,11 @@
 .home-container {
     background-color: #ca215a;
-    height: 100vh;
 }
 
 .card-container {
     display:flex;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .card-container span {
