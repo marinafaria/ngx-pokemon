@@ -1,5 +1,11 @@
+@import '../../../assets/styles/colors';
+
 .home-container {
-    background-color: #ca215a;
+    background-color: $redish-pink;
+    & mat-paginator {
+        background-color: $redish-pink;
+        color: $grayish-white;
+    }
 }
 
 .card-container {

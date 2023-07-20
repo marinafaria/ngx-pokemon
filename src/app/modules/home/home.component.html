@@ -2,11 +2,16 @@
     <app-header></app-header>
 
     <app-search-bar (searchedResults)="handlePokemonSearchedResults($event)"></app-search-bar>
-
-
+    <mat-paginator 
+        [length]="listSize"
+        [pageSize]="6"
+        [pageSizeOptions]="[6,12,20]"
+        (page)="getPaginatorData($event)"
+        aria-label="Select page">
+    </mat-paginator>
     <div class="card-container">
         <app-pokemon-card 
-            *ngFor="let pokemon of (pokemonList$ | async).slice(0,15)" 
+            *ngFor="let pokemon of (pokemonList$ | async | slice: lowLimit : highLimit)"
             [pokedex]="pokemon" 
             (onPokemonClick)="handlePokemonClick($event)"
         >
