@@ -6,6 +6,7 @@ import { SearchBarModule } from 'src/app/shared/search-bar/search-bar.module';
 import { HeaderModule } from 'src/app/core/basic-layout/header/header.module';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [HomeComponent, PokemonCardComponent],
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
     HomeRoutingModule,
     SearchBarModule,
     HeaderModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ]
 })
 export class HomeModule { }
