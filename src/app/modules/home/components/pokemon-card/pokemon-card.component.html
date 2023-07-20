@@ -1,5 +1,5 @@
 <div class="card-container" (click)='onPokemonClick.emit(pokedex)'>
     <div class="pokemon-name"> {{ pokemon?.name }} </div>
-    <img [src]="pokemon?.sprite ? pokemon.sprite : placeholder" [alt]="pokemon.name" width="100"/>
+    <img [src]="pokemon?.sprite ? pokemon.sprite : placeholder" [alt]="pokemon?.name" width="100"/>
     <ng-content></ng-content>
 </div>

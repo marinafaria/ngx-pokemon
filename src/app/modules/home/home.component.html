@@ -6,7 +6,7 @@
 
     <div class="card-container">
         <app-pokemon-card 
-            *ngFor="let pokemon of (pokemonList$ | async).slice(0,9)" 
+            *ngFor="let pokemon of (pokemonList$ | async).slice(0,15)" 
             [pokedex]="pokemon" 
             (onPokemonClick)="handlePokemonClick($event)"
         >
