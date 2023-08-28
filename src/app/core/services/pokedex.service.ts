@@ -12,14 +12,22 @@ import { environment } from 'src/environments/environment';
 export class PokedexService {
 
   pokemonList$ = new BehaviorSubject<PokedexRequest[]>([]);
+  originalList$ = new BehaviorSubject<PokedexRequest[]>([]);
 
   constructor(private http: HttpClient) { }
+
+  get originalList(): PokedexRequest[] {
+    return this.originalList$.getValue()
+  }
 
   getAllPokemonPaginated(offset = 0, limit = 20): Observable<any> {
     return this.http.get(`${environment.baseApiUrl}/pokemon/?offset=${offset}&limit=${limit}`)
       .pipe(
         map(this.handlePokedexResults),
-        tap( list => this.pokemonList$.next(list))
+        tap( list => {
+          this.originalList$.next(list); 
+          this.pokemonList$.next(list);
+        })
       );
   }
 

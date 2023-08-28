@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { PokedexService } from 'src/app/core/services/pokedex.service';
+import { isEmpty } from 'src/app/helpers/utils';
 import { PokedexRequest } from 'src/app/models/pokedex-request.model';
 
 @Component({
@@ -33,10 +34,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   handleForm(): void {
     this.form.controls.searchInput.valueChanges
     .pipe(
-      filter(input => String(input).length >= 3),
+      // filter(input => String(input).length >= 2),
       takeUntil(this.destroy$),
       debounceTime(1000),
       map( input => {
+        if(isEmpty(input)) return this.pokedexService.originalList
         return this.pokedexService.pokemonList$.getValue()
           .filter( pokemon => pokemon.name.startsWith(input));          
       })

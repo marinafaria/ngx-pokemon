@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { PokedexService } from 'src/app/core/services/pokedex.service';
@@ -13,13 +13,18 @@ import { PokedexRequest } from 'src/app/models/pokedex-request.model';
 export class HomeComponent implements OnInit {
 
   pokemonList$: BehaviorSubject<PokedexRequest[]>;
-  lowLimit: number = 0;
-  highLimit: number = 6;
+  lowLimit: number;
+  highLimit: number;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private pokedexService: PokedexService,
     private router: Router
-  ) { }
+  ) {
+    this.lowLimit = 0;
+    this.highLimit = 6;
+   }
 
   get listSize(): number{
     return this.pokemonList$.value.length 
@@ -34,6 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   handlePokemonSearchedResults(list: PokedexRequest[]) {
+    this.paginator.firstPage();
     this.pokemonList$.next(list);
   }
 
