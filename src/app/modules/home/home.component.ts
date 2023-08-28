@@ -39,14 +39,22 @@ export class HomeComponent implements OnInit {
   }
 
   handlePokemonSearchedResults(list: PokedexRequest[]) {
-    this.paginator.firstPage();
+    this.resetPagination();
     this.pokemonList$.next(list);
   }
 
   getPaginatorData(event: PageEvent): PageEvent {
     this.lowLimit = event.pageIndex * event.pageSize;
-    this.highLimit = this.highLimit + event.pageSize;
+    this.highLimit = event.pageIndex > event.previousPageIndex 
+      ? this.highLimit + event.pageSize 
+      : this.highLimit - event.pageSize;
     return event;
+  }
+
+  private resetPagination() {
+    this.paginator.firstPage();
+    this.lowLimit = 0;
+    this.highLimit = 6;
   }
 
 }
